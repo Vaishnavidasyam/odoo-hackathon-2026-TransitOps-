@@ -324,4 +324,5 @@ The backend enforces the following constraints server-side:
 
 **Odoo Hackathon 2026**
 
-*Submitted by [Vaishnavidasyam](https://github.com/Vaishnavidasyam)*
+*Submitted by [Vaishnavidasyam](https://github.com/Vaishnavidasyam),[RahulGoolagattu](https://github.com/GRahul9989
+)*
