@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:root {
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f8fafc;
+  transition: background-color 450ms ease, color 450ms ease;
+}
+
+:where(.dark, .dark *) body {
+  background: #060912;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.section-label {
+  color: #4f46e5;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 350ms ease;
+}
+
+:where(.dark, .dark *) .section-label {
+  color: #818cf8;
+}
+
+.section-title {
+  color: #0f172a;
+  font-size: clamp(2.65rem, 6vw, 5.6rem);
+  font-weight: 600;
+  letter-spacing: -0.067em;
+  line-height: 0.98;
+  transition: color 350ms ease;
+}
+
+:where(.dark, .dark *) .section-title {
+  color: #ffffff;
+}
+
+.section-copy {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.75;
+  transition: color 350ms ease;
+}
+
+:where(.dark, .dark *) .section-copy {
+  color: #94a3b8;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(79, 70, 229, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 70, 229, 0.08) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to right, black, transparent 72%);
+  transition: background-image 400ms ease;
+}
+
+:where(.dark, .dark *) .hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
+
+.fleet-map,
+.route-map {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 70% 25%, rgba(99, 102, 241, 0.18), transparent 38%);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+}
+
+.cta-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at center, black, transparent 75%);
+}
+
+.feature-row {
+  position: relative;
+}
+
+.feature-row::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(90deg, rgba(79, 70, 229, 0.05), transparent 72%);
+  content: "";
+  opacity: 0;
+  transform: scaleX(0.96);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+:where(.dark, .dark *) .feature-row::before {
+  background: linear-gradient(90deg, rgba(129, 140, 248, 0.08), transparent 72%);
+}
+
+.feature-row:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.feature-row > * {
+  position: relative;
+  z-index: 1;
+}
+
+.perspective {
+  perspective: 1800px;
+}
+
+.product-shell {
+  transform-style: preserve-3d;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.status-dot.violet { background: #8b5cf6; box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12); }
+.status-dot.emerald { background: #10b981; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12); }
+.status-dot.amber { background: #f59e0b; box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.12); }
+
+.particle {
+  animation: float-particle 8s ease-in-out infinite;
+}
+
+.analytics-panel::before {
+  position: absolute;
+  inset: 0 20% auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(165, 180, 252, 0.8), transparent);
+  content: "";
+}
+
+footer a {
+  transition: color 180ms ease;
+}
+
+footer a:hover {
+  color: white;
+}
+
+@keyframes float-particle {
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.25; }
+  50% { transform: translate3d(14px, -35px, 0); opacity: 0.75; }
+}
+
+@media (max-width: 767px) {
+  .hero-grid {
+    background-size: 48px 48px;
+  }
+
+  .section-title {
+    letter-spacing: -0.055em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
